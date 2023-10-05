@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Autodesk.DesignScript.Runtime;
 #if NET6_0_OR_GREATER
-using ForgeUnitsCLR = Autodesk.ForgeUnits;
+using ForgeUnits = Autodesk.ForgeUnits;
 #endif
 
 namespace DynamoUnits
@@ -12,9 +12,9 @@ namespace DynamoUnits
     /// </summary>
     public class Quantity
     {
-        internal readonly ForgeUnitsCLR.Quantity forgeQuantity;
+        internal readonly ForgeUnits.Quantity forgeQuantity;
 
-        internal Quantity(ForgeUnitsCLR.Quantity quantity)
+        internal Quantity(ForgeUnits.Quantity quantity)
         {
             this.forgeQuantity = quantity ?? throw new ArgumentNullException();
         }

@@ -21,10 +21,10 @@
         <PackageReference Include="System.Resources.Extensions" Version="5.0.0" />
     </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="ForgeUnits.NET" Version="4.0.3" GeneratePathProperty="true">
-        <ExcludeAssets>build</ExcludeAssets>
+    <PackageReference Include="ForgeUnits.NET" Version="4.1.1" GeneratePathProperty="true">
+        <ExcludeAssets>build;runtime</ExcludeAssets>
     </PackageReference>
-	  <PackageReference Include="ForgeUnits.Schemas" Version="1.0.0" GeneratePathProperty="true" />
+	<PackageReference Include="ForgeUnits.Schemas" Version="1.0.0" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DynamoUnits_DynamoCustomization.xml" />
@@ -41,8 +41,9 @@
       <DependentUpon>Resources.en-US.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-    <Target Name="CopyFiles" BeforeTargets="Build">
+  <Target Name="CopyFiles" BeforeTargets="Build">
     <Copy SourceFiles="$(ProjectDir)DynamoUnits_DynamoCustomization.xml" DestinationFolder="$(OutputPath)" />
+    <Copy SourceFiles="$(PkgForgeUnits_NET)\lib\net6.0\ForgeUnitsManaged.dll" DestinationFolder="$(OutputPath)" />
   </Target>
   <Target Name="GenerateFiles" AfterTargets="ResolveSateliteResDeps" Condition=" '$(OS)' != 'Unix' ">
     <!-- Generate customization dll -->
